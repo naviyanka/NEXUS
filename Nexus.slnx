@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Nexus.Gateway/Nexus.Gateway.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Nexus.Gateway.Tests/Nexus.Gateway.Tests.csproj" />
+  </Folder>
+</Solution>
