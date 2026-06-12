@@ -43,6 +43,11 @@ public partial class Program
         // Plugin Loader (Phase 5)
         builder.Services.AddSingleton<PluginLoader>();
 
+        // Controllers
+        builder.Services.AddControllers();
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
+
         // SignalR and Quartz.NET
         builder.Services.AddSignalR();
         builder.Services.AddQuartz(q =>
@@ -74,6 +79,9 @@ public partial class Program
         app.UseAuthentication();
         app.UseAuthorization();
 
+        app.UseSwagger();
+        app.UseSwaggerUI();
+
         app.MapGet("/api/auth/me", (System.Security.Claims.ClaimsPrincipal user) =>
         {
             return new
@@ -90,6 +98,7 @@ public partial class Program
         app.MapGet("/api/plugins", (PluginLoader loader) => loader.GetLoadedPlugins()).RequireAuthorization();
 
         app.MapHub<TerminalHub>("/hubs/terminal");
+        app.MapControllers();
 
         app.Run();
     }
