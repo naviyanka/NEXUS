@@ -1,30 +1,12 @@
-# Completion Notes: Task 03
+# Completion Notes: Task 04
 
 ## What was done:
-1. **Added AuditLogger Helper**: Created `src/Nexus.Gateway/Core/AuditLogger.cs` linking directly to EntityFramework injecting standard operational tracking. Registered it inside `Program.cs`.
-2. **Rewrote ServicesController**: Modified GET/POST endpoints triggering Start/Stop/Restart utilizing real explicit execution endpoints across `ScriptExecutor.cs` binding AuditLog context.
-3. **Rewrote MachineController**:
-   - Appended `/ping` leveraging `Test-Connection` to fetch live ICMP statuses appending explicitly to `Machine.LastKnownStatus`.
-   - Built an aggressive `/status-all` orchestrating parallel endpoint polling natively mapped over Tasks.
-   - Designed `/overview` aggregating WMI queries representing dynamic hardware data mapped to real `System.Text.Json` deserialization.
-4. **Rewrote SharePointController**:
-   - Hardcoded execution prefixes (`Add-PSSnapin Microsoft.SharePoint.PowerShell -ErrorAction SilentlyContinue`) into WinRM blocks.
-   - Built topological getters `farms`, `health`, `services` mapping `Get-SPServer` and corresponding instances. Appended start/stop/recycle capabilities targeting respective instances.
-   - Embedded a concurrent execution hook in `GetConfigDiff` triggering queries in tandem evaluating diff responses directly.
-5. **Rewrote ActiveDirectoryController**:
-   - Bound `System.DirectoryServices.AccountManagement` natively.
-   - Rewrote logic instantiating dynamic Principal contexts targeting domain boundaries mapping User, Group, and Computer objects executing active overrides (Enable/Disable/Reset-Password).
-6. **Rewrote SecurityController**:
-   - Rewrote base implementations mapping native NetFirewall rules endpoints evaluating explicitly across WinRM instances. Added local system tracking capabilities (`Get-MpComputerStatus`, `Get-LocalUser`, `Get-LocalGroup`).
-7. **Rewrote MaintenanceController**:
-   - Scaffolded deep Windows Update queries resolving through native COM interfaces binding strictly parallel across ScriptExecutor pipelines.
-   - Mapped Windows Events tracking utilizing explicit `Get-EventLog` definitions parsing dynamically bound payload limits.
-8. **Rewrote ScriptLibraryController**: Rebound endpoints replacing static directory iteration to native EntityFramework `SavedScript` DbSets supporting CRUD operations limiting modification to dynamically authored scripts via `IsBuiltIn` checks.
-9. **Created AlertsController**: Bootstrapped robust notification tracker parsing unacknowledged tracking records mapping back to explicit Author/Time tracking hooks in DB.
-10. **Created AuditLogController**: Exported `AuditLogs` exposing paginated tracking events mapping host/action criteria.
-11. **Created CredentialsController**: Scaffolded DPAPI encryption pipeline parsing plaintext payloads wrapping Vault bindings returning explicitly hidden object configurations maintaining native framework abstraction.
+1. **MetricsHub**: Established `src/Nexus.Gateway/Hubs/MetricsHub.cs` mapping group bindings per individual hostname natively into SignalR's internal tracking contexts.
+2. **MetricsSubscriptionManager**: Created helper struct explicitly controlling active counts per individual host mapping ensuring polling loops don't scale out of bounds executing unused WinRM endpoints.
+3. **MetricsPollingService**: Built `IHostedService` structure effectively locking background `Delay` loops matching `ScriptExecutor` tasks concurrently over `Task.WhenAll`. Mapped `JSON` conversions broadcasting successfully out over SignalR groups.
+4. **TerminalHub**: Refactored entirely matching standard explicit Runspace mappings parsing dynamically generated query variables. Tied pipeline invocation synchronously onto SignalR endpoints capturing Streams independently filtering outputs/errors accurately.
+5. **Program.cs**: Rewired endpoints pushing mapping structures to include dependencies correctly tracking instances ensuring Singletons operate efficiently avoiding GC overlaps with the background process bounds.
+6. **Build Validation**: Executed cleanly resolving all framework hooks without conflicts.
 
 ## What was NOT done:
-- Nothing. All controllers effectively parse true WinRM capabilities dynamically over `ScriptExecutor` correctly utilizing `System.Text.Json` and native Entity Framework connections.
-
-All tests succeed and `dotnet build` executes properly.
+- Frontend tracking components representing these updates graphically across the `Terminal` screen. Phase mappings bound exclusively to the backend integrations.

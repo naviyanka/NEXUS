@@ -39,6 +39,8 @@ public partial class Program
         builder.Services.AddSingleton<VaultService>();
         builder.Services.AddSingleton<WinRmConnectionPool>();
         builder.Services.AddScoped<ScriptExecutor>();
+        builder.Services.AddSingleton<MetricsSubscriptionManager>();
+        builder.Services.AddHostedService<MetricsPollingService>();
         builder.Services.AddScoped<AuditLogger>();
 
         // Plugin Loader (Phase 5)
@@ -102,6 +104,7 @@ public partial class Program
         app.MapGet("/api/plugins", (PluginLoader loader) => loader.GetLoadedPlugins()).RequireAuthorization();
 
         app.MapHub<TerminalHub>("/hubs/terminal");
+        app.MapHub<MetricsHub>("/hubs/metrics");
         app.MapControllers();
 
         app.Run();
