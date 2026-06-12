@@ -2,9 +2,12 @@ import {
   IconLayoutDashboard,
   IconServer,
   IconPlug,
-  IconSettings
+  IconSettings,
+  IconTerminal,
+  IconDeviceDesktop,
+  IconTool
 } from '@tabler/icons-react'
-import { AudioWaveform, Command, GalleryVerticalEnd } from 'lucide-react'
+import { Command } from 'lucide-react'
 import { type SidebarData } from '../types'
 
 export const sidebarData: SidebarData = {
@@ -33,6 +36,21 @@ export const sidebarData: SidebarData = {
           title: 'Machines',
           url: '/machines',
           icon: IconServer,
+        },
+        {
+          title: 'Terminal',
+          url: '/terminal',
+          icon: IconTerminal,
+        },
+        {
+          title: 'Remote Desktop',
+          url: '/desktop',
+          icon: IconDeviceDesktop,
+        },
+        {
+          title: 'Core Tools',
+          url: '/tools',
+          icon: IconTool,
         },
         {
           title: 'Plugins',
