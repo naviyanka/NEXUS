@@ -31,7 +31,15 @@ public class SecurityController : ControllerBase
     [HttpPost("firewall/{hostname}/toggle")]
     public async Task<IActionResult> ToggleFirewallRule(string hostname, [FromBody] string ruleName)
     {
-        var script = $"Toggle-NetFirewallRule -Name {ruleName}";
+        var script = $"Set-NetFirewallRule -Name '{ruleName}' -Enabled True";
+        var result = await _executor.ExecutePowerShellAsync(script, hostname);
+        return Ok(new { Message = result });
+    }
+
+    [HttpPost("firewall/{hostname}/disable")]
+    public async Task<IActionResult> DisableFirewallRule(string hostname, [FromBody] string ruleName)
+    {
+        var script = $"Set-NetFirewallRule -Name '{ruleName}' -Enabled False";
         var result = await _executor.ExecutePowerShellAsync(script, hostname);
         return Ok(new { Message = result });
     }

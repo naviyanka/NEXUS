@@ -38,7 +38,7 @@ public partial class Program
         // Core Services
         builder.Services.AddSingleton<VaultService>();
         builder.Services.AddSingleton<WinRmConnectionPool>();
-        builder.Services.AddTransient<ScriptExecutor>();
+        builder.Services.AddScoped<ScriptExecutor>();
 
         // Plugin Loader (Phase 5)
         builder.Services.AddSingleton<PluginLoader>();
