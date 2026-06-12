@@ -5,7 +5,8 @@ import {
   IconSettings,
   IconTerminal,
   IconDeviceDesktop,
-  IconTool
+  IconTool,
+  IconBrandAppgallery
 } from '@tabler/icons-react'
 import { Command } from 'lucide-react'
 import { type SidebarData } from '../types'
@@ -51,6 +52,11 @@ export const sidebarData: SidebarData = {
           title: 'Core Tools',
           url: '/tools',
           icon: IconTool,
+        },
+        {
+          title: 'SharePoint Farm',
+          url: '/sharepoint',
+          icon: IconBrandAppgallery,
         },
         {
           title: 'Plugins',
