@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Nexus.Gateway.Data;
+using Nexus.Gateway.Models;
 
 namespace Nexus.Gateway.Controllers;
 
@@ -8,35 +11,74 @@ namespace Nexus.Gateway.Controllers;
 [Route("api/[controller]")]
 public class ScriptLibraryController : ControllerBase
 {
-    private readonly string _scriptsDir;
+    private readonly NexusDbContext _context;
 
-    public ScriptLibraryController()
+    public ScriptLibraryController(NexusDbContext context)
     {
-        _scriptsDir = Path.Combine(Directory.GetCurrentDirectory(), "scripts");
-        if (!Directory.Exists(_scriptsDir)) Directory.CreateDirectory(_scriptsDir);
+        _context = context;
     }
 
     [HttpGet]
-    public IActionResult GetScripts()
+    public async Task<IActionResult> GetScripts([FromQuery] string? category, [FromQuery] string? tag)
     {
-        var scripts = Directory.GetFiles(_scriptsDir, "*.ps1").Select(f => new {
-            Name = Path.GetFileName(f),
-            Path = f
-        });
+        var query = _context.SavedScripts.AsQueryable();
+        if (!string.IsNullOrEmpty(category)) query = query.Where(s => s.Category == category);
+        if (!string.IsNullOrEmpty(tag)) query = query.Where(s => s.Tags.Contains(tag));
+
+        var scripts = await query.ToListAsync();
         return Ok(scripts);
     }
 
-    [HttpPost]
-    public async Task<IActionResult> SaveScript([FromBody] ScriptDto script)
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetScript(int id)
     {
-        var path = Path.Combine(_scriptsDir, script.Name);
-        await File.WriteAllTextAsync(path, script.Content);
-        return Ok(new { Message = "Saved" });
+        var script = await _context.SavedScripts.FindAsync(id);
+        if (script == null) return NotFound();
+        return Ok(script);
     }
-}
 
-public class ScriptDto
-{
-    public string Name { get; set; } = string.Empty;
-    public string Content { get; set; } = string.Empty;
+    [HttpPost]
+    public async Task<IActionResult> SaveScript([FromBody] SavedScript script)
+    {
+        script.CreatedAt = DateTime.UtcNow;
+        script.UpdatedAt = DateTime.UtcNow;
+        script.Author = User.Identity?.Name ?? "Unknown";
+
+        _context.SavedScripts.Add(script);
+        await _context.SaveChangesAsync();
+        return CreatedAtAction(nameof(GetScript), new { id = script.Id }, script);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateScript(int id, [FromBody] SavedScript script)
+    {
+        if (id != script.Id) return BadRequest();
+
+        var existing = await _context.SavedScripts.FindAsync(id);
+        if (existing == null) return NotFound();
+        if (existing.IsBuiltIn) return Forbid(); // Cannot edit seeded scripts
+
+        existing.Name = script.Name;
+        existing.Description = script.Description;
+        existing.Content = script.Content;
+        existing.ScriptType = script.ScriptType;
+        existing.Category = script.Category;
+        existing.Tags = script.Tags;
+        existing.UpdatedAt = DateTime.UtcNow;
+
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteScript(int id)
+    {
+        var script = await _context.SavedScripts.FindAsync(id);
+        if (script == null) return NotFound();
+        if (script.IsBuiltIn) return Forbid(); // Cannot delete seeded scripts
+
+        _context.SavedScripts.Remove(script);
+        await _context.SaveChangesAsync();
+        return NoContent();
+    }
 }
