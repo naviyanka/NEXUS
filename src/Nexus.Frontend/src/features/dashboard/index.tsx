@@ -3,6 +3,11 @@ import { Main } from '@/components/layout/main'
 import { TopNav } from '@/components/layout/top-nav'
 import { ProfileDropdown } from '@/components/profile-dropdown'
 import { ThemeSwitch } from '@/components/theme-switch'
+import { TopStatusBar } from './components/top-status-bar'
+import { MachineGrid } from './components/machine-grid'
+import { SharePointHealthPanels } from './components/sharepoint-health-panels'
+import { MetricsRow } from './components/metrics-row'
+import { RecentAlertsAudit } from './components/recent-alerts-audit'
 
 export default function Dashboard() {
   return (
@@ -15,12 +20,11 @@ export default function Dashboard() {
         </div>
       </Header>
       <Main>
-        <div className='mb-2 flex items-center justify-between space-y-2'>
-          <h1 className='text-2xl font-bold tracking-tight'>NEXUS Dashboard</h1>
-        </div>
-        <div className='flex items-center justify-center h-full text-muted-foreground'>
-          Dashboard grid engine will be implemented here (Phase 9).
-        </div>
+        <TopStatusBar />
+        <MachineGrid />
+        <SharePointHealthPanels />
+        <MetricsRow />
+        <RecentAlertsAudit />
       </Main>
     </>
   )
