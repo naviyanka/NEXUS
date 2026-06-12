@@ -71,6 +71,9 @@ public partial class Program
             var db = scope.ServiceProvider.GetRequiredService<NexusDbContext>();
             db.Database.EnsureCreated();
 
+            // Invoke the new database seeder
+            DatabaseSeeder.Seed(db);
+
             var pluginLoader = scope.ServiceProvider.GetRequiredService<PluginLoader>();
             pluginLoader.LoadPlugins();
         }

@@ -1,21 +1,12 @@
-# Completion Notes: Task 01
+# Completion Notes: Task 02
 
 ## What was done:
-1. **Fixed csproj and packages:**
-   - Modified `Nexus.Gateway.csproj` to target `net8.0-windows` (which provides DPAPI and WMI APIs).
-   - Removed .NET 10 package dependencies and strictly bound everything to `<PackageReference>`s bounded within `8.0.0` or `.NET 8` equivalent releases.
-   - Updated `global.json` pinning `sdk.version` to `8.0.0`.
-2. **Implemented ScriptExecutor.cs:**
-   - Pulled in `System.Management.Automation` and set up the true `PowerShell.Create()` execution block pointing dynamically at `WSManConnectionInfo` utilizing `WinRmConnectionPool`. Included the parallel logic block correctly.
-3. **Implemented WinRmConnectionPool.cs:**
-   - Added robust concurrency logic managing tracked target metadata (`MachineConnectionInfo`) mapped with `SemaphoreSlim` limiting simultaneous host requests.
-4. **Fixed Program.cs:**
-   - Refactored Dependency Injection mapping for `ScriptExecutor` transitioning it to `.AddScoped` recognizing its new typed dependencies.
-5. **Fixed SecurityController.cs:**
-   - Updated the incorrect `Toggle-NetFirewallRule` reference converting it properly to `Set-NetFirewallRule -Name ... -Enabled True`. Also added a separate `/disable` route utilizing `-Enabled False`.
+1. **Added Models**: Expanded the `src/Nexus.Gateway/Models/` namespace by adding `AuditLog.cs`, `SavedScript.cs`, `Credential.cs`, `Alert.cs`, and `JobHistory.cs`.
+2. **Updated Machine Model**: Expanded the properties in `Machine.cs` to include `DisplayName`, `Description`, `Tags`, `Role`, `Icon`, `CredentialId`, `LastSeenOnline`, and `LastKnownStatus`.
+3. **Updated DbContext**: Registered the new models within `NexusDbContext` and added their corresponding `DbSet` properties. Also mapped constraints inside `OnModelCreating`.
+4. **Created Database Seeder**: Added `DatabaseSeeder.cs` inside `src/Nexus.Gateway/Data/` which populates the `MachineGroups`, `Machines`, and `SavedScripts` tables on the initial application boot if the tables are empty.
+5. **Wired the Seeder**: Embedded the seeder trigger inside `Program.cs` right after `db.Database.EnsureCreated()`.
+6. **Build Checked**: Ran `dotnet build` successfully confirming there are no compile or dependency errors.
 
 ## What was NOT done:
-- We left the data objects populated in the `[HttpGet]` endpoints of the plugin controllers mocked. Full end-to-end integration tracking requires active WinRM objects parsing which are mocked until actual lab nodes bind to it.
-- `ScriptExecutor` remains structured to return `ScriptResult`s which currently bubble raw objects. The exact mapping bindings to parsing raw objects back to JS depends strictly on the executing environment (Sharepoint vs Base OS Tools).
-
-All changes validated. `dotnet build src/Nexus.Gateway/Nexus.Gateway.csproj` successfully compiles.
+- Controllers for manipulating the new objects (`SavedScripts`, `Alerts`, `AuditLog`, `JobHistory`) were not refactored or updated beyond the initial `MachineController` schema to fully expose these new tables via endpoints yet.
