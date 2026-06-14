@@ -1,0 +1,14 @@
+MSBuild version 17.8.49+7806cbf7b for .NET
+  Determining projects to restore...
+  Restored /app/src/Nexus.Gateway/Nexus.Gateway.csproj (in 1.46 sec).
+/app/src/Nexus.Gateway/Controllers/ActiveDirectoryController.cs(1,32): error CS0234: The type or namespace name 'AccountManagement' does not exist in the namespace 'System.DirectoryServices' (are you missing an assembly reference?) [/app/src/Nexus.Gateway/Nexus.Gateway.csproj]
+/app/src/Nexus.Gateway/Controllers/ActiveDirectoryController.cs(13,13): error CS0246: The type or namespace name 'PrincipalContext' could not be found (are you missing a using directive or an assembly reference?) [/app/src/Nexus.Gateway/Nexus.Gateway.csproj]
+
+Build FAILED.
+
+/app/src/Nexus.Gateway/Controllers/ActiveDirectoryController.cs(1,32): error CS0234: The type or namespace name 'AccountManagement' does not exist in the namespace 'System.DirectoryServices' (are you missing an assembly reference?) [/app/src/Nexus.Gateway/Nexus.Gateway.csproj]
+/app/src/Nexus.Gateway/Controllers/ActiveDirectoryController.cs(13,13): error CS0246: The type or namespace name 'PrincipalContext' could not be found (are you missing a using directive or an assembly reference?) [/app/src/Nexus.Gateway/Nexus.Gateway.csproj]
+    0 Warning(s)
+    2 Error(s)
+
+Time Elapsed 00:00:14.82
