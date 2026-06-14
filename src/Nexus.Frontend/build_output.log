@@ -1,0 +1,60 @@
+
+> shadcn-admin@2.2.1 build
+> tsc -b && vite build
+
+src/components/layout/data/sidebar-data.ts(10,8): error TS2307: Cannot find module '@tabler/icons-react' or its corresponding type declarations.
+src/components/sign-out-dialog.tsx(2,30): error TS2307: Cannot find module '@/stores/auth-store' or its corresponding type declarations.
+src/components/sign-out-dialog.tsx(20,7): error TS2322: Type '"/sign-in"' is not assignable to type '"/" | "." | ".." | "/401" | "/403" | "/404" | "/500" | "/503" | "/settings" | "/errors/$error" | "/apps" | "/help-center" | "/settings/account" | "/settings/appearance" | "/settings/display" | "/settings/notifications"'.
+src/components/sign-out-dialog.tsx(21,17): error TS2353: Object literal may only specify known properties, and 'redirect' does not exist in type 'ParamsReducerFn<RouterCore<Route<Register, any, "/", "/", string, "__root__", undefined, {}, {}, AnyContext, AnyContext, {}, undefined, RootRouteChildren, FileRouteTypes, unknown, unknown, undefined>, "never", false, RouterHistory, Record<...>>, "SEARCH", string, "/sign-in">'.
+src/features/activedirectory/components/groups-tab.tsx(3,40): error TS2307: Cannot find module '@/types/activedirectory' or its corresponding type declarations.
+src/features/activedirectory/components/groups-tab.tsx(10,8): error TS2307: Cannot find module '@/components/ui/accordion' or its corresponding type declarations.
+src/features/activedirectory/components/groups-tab.tsx(11,1): error TS6133: 'useState' is declared but its value is never read.
+src/features/activedirectory/components/users-tab.tsx(4,24): error TS2307: Cannot find module '@/types/activedirectory' or its corresponding type declarations.
+src/features/activedirectory/index.tsx(8,30): error TS2307: Cannot find module './components/computers-tab' or its corresponding type declarations.
+src/features/activedirectory/index.tsx(9,31): error TS2307: Cannot find module './components/domain-info-tab' or its corresponding type declarations.
+src/features/auth/forgot-password/components/forgot-password-form.tsx(46,20): error TS2322: Type '"/otp"' is not assignable to type '"/" | "." | ".." | "/401" | "/403" | "/404" | "/500" | "/503" | "/settings" | "/errors/$error" | "/apps" | "/help-center" | "/settings/account" | "/settings/appearance" | "/settings/display" | "/settings/notifications"'.
+src/features/auth/forgot-password/index.tsx(33,15): error TS2322: Type '"/sign-up"' is not assignable to type '"/" | "." | ".." | "/401" | "/403" | "/404" | "/500" | "/503" | "/settings" | "/errors/$error" | "/apps" | "/help-center" | "/settings/account" | "/settings/appearance" | "/settings/display" | "/settings/notifications"'.
+src/features/auth/otp/index.tsx(33,15): error TS2322: Type '"/sign-in"' is not assignable to type '"/" | "." | ".." | "/401" | "/403" | "/404" | "/500" | "/503" | "/settings" | "/errors/$error" | "/apps" | "/help-center" | "/settings/account" | "/settings/appearance" | "/settings/display" | "/settings/notifications"'.
+src/features/auth/sign-in/components/user-auth-form.test.tsx(115,21): error TS2322: Type '{ redirectTo: string; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'redirectTo' does not exist on type 'IntrinsicAttributes'.
+src/features/auth/sign-in/index.tsx(14,36): error TS2322: Type '"/(auth)/sign-in"' is not assignable to type 'ConstrainLiteral<"/(auth)/sign-in", "__root__" | "/_authenticated" | "/_authenticated/" | "/(errors)/503" | "/(errors)/500" | "/(errors)/404" | "/(errors)/403" | "/(errors)/401" | "/_authenticated/settings" | ... 7 more ... | "/_authenticated/errors/$error", "__root__" | ... 15 more ... | "/_authenticated/errors/$er...'.
+src/features/auth/sign-in/index.tsx(26,15): error TS2322: Type '"/sign-up"' is not assignable to type '"/" | "." | ".." | "/401" | "/403" | "/404" | "/500" | "/503" | "/settings" | "/errors/$error" | "/apps" | "/help-center" | "/settings/account" | "/settings/appearance" | "/settings/display" | "/settings/notifications"'.
+src/features/auth/sign-in/index.tsx(34,25): error TS2322: Type '{ redirectTo: never; }' is not assignable to type 'IntrinsicAttributes'.
+  Property 'redirectTo' does not exist on type 'IntrinsicAttributes'.
+src/features/auth/sign-in/sign-in-2.tsx(26,17): error TS2322: Type '"/sign-up"' is not assignable to type '"/" | "." | ".." | "/401" | "/403" | "/404" | "/500" | "/503" | "/settings" | "/errors/$error" | "/apps" | "/help-center" | "/settings/account" | "/settings/appearance" | "/settings/display" | "/settings/notifications"'.
+src/features/auth/sign-up/index.tsx(25,15): error TS2322: Type '"/sign-in"' is not assignable to type '"/" | "." | ".." | "/401" | "/403" | "/404" | "/500" | "/503" | "/settings" | "/errors/$error" | "/apps" | "/help-center" | "/settings/account" | "/settings/appearance" | "/settings/display" | "/settings/notifications"'.
+src/features/dashboard/index.tsx(6,30): error TS2307: Cannot find module './components/top-status-bar' or its corresponding type declarations.
+src/features/dashboard/index.tsx(7,29): error TS2307: Cannot find module './components/machine-grid' or its corresponding type declarations.
+src/features/dashboard/index.tsx(8,40): error TS2307: Cannot find module './components/sharepoint-health-panels' or its corresponding type declarations.
+src/features/dashboard/index.tsx(9,28): error TS2307: Cannot find module './components/metrics-row' or its corresponding type declarations.
+src/features/dashboard/index.tsx(10,35): error TS2307: Cannot find module './components/recent-alerts-audit' or its corresponding type declarations.
+src/features/machines/components/overview-tab.tsx(3,26): error TS2307: Cannot find module '@/components/ui/progress' or its corresponding type declarations.
+src/features/machines/index.tsx(116,21): error TS2322: Type '"/terminal"' is not assignable to type '"/" | "." | ".." | "/401" | "/403" | "/404" | "/500" | "/503" | "/settings" | "/errors/$error" | "/apps" | "/help-center" | "/settings/account" | "/settings/appearance" | "/settings/display" | "/settings/notifications"'.
+src/features/machines/index.tsx(116,46): error TS2353: Object literal may only specify known properties, and 'hostname' does not exist in type 'ParamsReducerFn<RouterCore<Route<Register, any, "/", "/", string, "__root__", undefined, {}, {}, AnyContext, AnyContext, {}, undefined, RootRouteChildren, FileRouteTypes, unknown, unknown, undefined>, "never", false, RouterHistory, Record<...>>, "SEARCH", string, "/terminal">'.
+src/features/machines/index.tsx(119,21): error TS2322: Type '`/machines/${number}`' is not assignable to type '"/" | "." | ".." | "/401" | "/403" | "/404" | "/500" | "/503" | "/settings" | "/errors/$error" | "/apps" | "/help-center" | "/settings/account" | "/settings/appearance" | "/settings/display" | "/settings/notifications"'.
+src/features/machines/index.tsx(127,49): error TS2322: Type '`/machines/${number}`' is not assignable to type '"/" | "." | ".." | "/401" | "/403" | "/404" | "/500" | "/503" | "/settings" | "/errors/$error" | "/apps" | "/help-center" | "/settings/account" | "/settings/appearance" | "/settings/display" | "/settings/notifications"'.
+src/features/machines/index.tsx(127,90): error TS2353: Object literal may only specify known properties, and 'tab' does not exist in type 'ParamsReducerFn<RouterCore<Route<Register, any, "/", "/", string, "__root__", undefined, {}, {}, AnyContext, AnyContext, {}, undefined, RootRouteChildren, FileRouteTypes, unknown, unknown, undefined>, "never", false, RouterHistory, Record<...>>, "SEARCH", string, `/machines/${number}`>'.
+src/features/machines/index.tsx(128,49): error TS2322: Type '`/machines/${number}`' is not assignable to type '"/" | "." | ".." | "/401" | "/403" | "/404" | "/500" | "/503" | "/settings" | "/errors/$error" | "/apps" | "/help-center" | "/settings/account" | "/settings/appearance" | "/settings/display" | "/settings/notifications"'.
+src/features/machines/index.tsx(128,90): error TS2353: Object literal may only specify known properties, and 'tab' does not exist in type 'ParamsReducerFn<RouterCore<Route<Register, any, "/", "/", string, "__root__", undefined, {}, {}, AnyContext, AnyContext, {}, undefined, RootRouteChildren, FileRouteTypes, unknown, unknown, undefined>, "never", false, RouterHistory, Record<...>>, "SEARCH", string, `/machines/${number}`>'.
+src/features/machines/index.tsx(129,49): error TS2322: Type '`/machines/${number}`' is not assignable to type '"/" | "." | ".." | "/401" | "/403" | "/404" | "/500" | "/503" | "/settings" | "/errors/$error" | "/apps" | "/help-center" | "/settings/account" | "/settings/appearance" | "/settings/display" | "/settings/notifications"'.
+src/features/machines/index.tsx(129,90): error TS2353: Object literal may only specify known properties, and 'tab' does not exist in type 'ParamsReducerFn<RouterCore<Route<Register, any, "/", "/", string, "__root__", undefined, {}, {}, AnyContext, AnyContext, {}, undefined, RootRouteChildren, FileRouteTypes, unknown, unknown, undefined>, "never", false, RouterHistory, Record<...>>, "SEARCH", string, `/machines/${number}`>'.
+src/features/machines/index.tsx(147,27): error TS6133: 'columnId' is declared but its value is never read.
+src/features/machines/machine-detail.tsx(14,11): error TS2339: Property 'machineId' does not exist on type '{ error?: string | undefined; }'.
+src/features/sharepoint/components/config-diff-tab.tsx(3,24): error TS2307: Cannot find module '@/types/sharepoint' or its corresponding type declarations.
+src/features/sharepoint/components/health-tab.tsx(7,24): error TS2307: Cannot find module '@/types/sharepoint' or its corresponding type declarations.
+src/features/sharepoint/components/iis-tab.tsx(4,46): error TS2307: Cannot find module '@/types/sharepoint' or its corresponding type declarations.
+src/features/sharepoint/components/services-tab.tsx(4,43): error TS2307: Cannot find module '@/types/sharepoint' or its corresponding type declarations.
+src/features/sharepoint/components/uls-tab.tsx(4,34): error TS2307: Cannot find module '@/types/sharepoint' or its corresponding type declarations.
+src/features/sharepoint/components/upgrade-checker-tab.tsx(3,24): error TS2307: Cannot find module '@/types/sharepoint' or its corresponding type declarations.
+src/features/sharepoint/index.tsx(8,24): error TS2307: Cannot find module '@/types/sharepoint' or its corresponding type declarations.
+src/features/terminal/TerminalTab.tsx(4,39): error TS6133: 'Copy' is declared but its value is never read.
+src/hooks/useTerminalSession.ts(2,26): error TS2307: Cannot find module 'xterm' or its corresponding type declarations.
+src/hooks/useTerminalSession.ts(3,26): error TS2307: Cannot find module 'xterm-addon-fit' or its corresponding type declarations.
+src/hooks/useTerminalSession.ts(4,31): error TS2307: Cannot find module 'xterm-addon-web-links' or its corresponding type declarations.
+src/hooks/useTerminalSession.ts(5,26): error TS2307: Cannot find module '@microsoft/signalr' or its corresponding type declarations.
+src/hooks/useTerminalSession.ts(72,33): error TS7006: Parameter 'err' implicitly has an 'any' type.
+src/hooks/useTerminalSession.ts(79,17): error TS7006: Parameter 'data' implicitly has an 'any' type.
+src/main.tsx(6,31): error TS2307: Cannot find module './context/theme-context' or its corresponding type declarations.
+src/routes/_authenticated/route.tsx(2,32): error TS2307: Cannot find module '@/context/search-context' or its corresponding type declarations.
+src/routes/_authenticated/route.tsx(3,26): error TS2307: Cannot find module '@/components/layout/app-shell' or its corresponding type declarations.
+src/stores/auth-store.test.ts(5,41): error TS2307: Cannot find module './auth-store' or its corresponding type declarations.

@@ -21,3 +21,9 @@ yarn-error.log*
 pnpm-debug.log*
 node_modules/
 src/Nexus.Frontend/node_modules/
+
+node_modules
+**/node_modules
+**/node_modules/*
+src/Nexus.Frontend/node_modules
+src/Nexus.Frontend/node_modules/*
